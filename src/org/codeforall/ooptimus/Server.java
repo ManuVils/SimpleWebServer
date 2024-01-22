@@ -16,6 +16,12 @@ public class Server {
             try {
                 ServerSocket serverSocket = new ServerSocket(portNumber);
                 Socket clientSocket = serverSocket.accept();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                String requestReader = reader.readLine();
+                String clientRequest = requestReader.split(" ")[1];
+
+                ServerOptions serverOptions = new ServerOptions(clientRequest);
                 
 
             } catch (IOException e) {
