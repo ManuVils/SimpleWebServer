@@ -20,7 +20,8 @@ public class Server {
 
                 ServerOptions serverOptions = new ServerOptions(clientRequest);
 
-
+                FileInputStream inputStream = new FileInputStream(serverOptions.clientRequestedFile());
+                OutputStream outputStream = clientSocket.getOutputStream();
 
 
 
