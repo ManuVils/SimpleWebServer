@@ -23,6 +23,12 @@ public class Server {
                 FileInputStream inputStream = new FileInputStream(serverOptions.clientRequestedFile());
                 OutputStream outputStream = clientSocket.getOutputStream();
 
+                outputStream.write(serverOptions.fileRequestedHeader().getBytes());
+
+                byte[] buffer = new byte[(int) serverOptions.clientRequestedFile().length()];
+                inputStream.read(buffer);
+                outputStream.write(buffer);
+
 
 
             } catch (IOException e) {
